@@ -10,7 +10,7 @@ services:
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health
     numInstances: 1          # one copy only: scheduled backup & birthday emails run inside the app
-    plan: starter            # always-on (no sleep); upgrade to standard for more RAM
+    plan: free               # 100% free tier — no credit card needed
     envVars:
       # ---- database (auto-linked to the PostgreSQL database below) ----
       - key: DATABASE_URL
@@ -61,4 +61,4 @@ databases:
   - name: bladeos-db
     databaseName: bladeos
     user: bladeos
-    plan: starter            # Render managed PostgreSQL — includes daily automatic backups
+    plan: free               # 100% free tier PostgreSQL — no credit card needed
