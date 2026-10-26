@@ -28,7 +28,7 @@ services:
       - key: ADMIN_PASSWORD
         sync: false
       - key: ADMIN_NAME
-        value: Jeffrey
+        value: Blades
 
       # ---- backups — set BACKUP_PASSPHRASE at deploy time; add S3 vars for nightly off-site copies ----
       #  Without S3 vars: weekly encrypted download from Administration → Backups is the backup.
