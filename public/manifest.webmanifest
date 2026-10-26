@@ -1,0 +1,22 @@
+{
+  "name": "BladeOS — Blades & Butchers",
+  "short_name": "BladeOS",
+  "description": "Blades & Butchers operations: POS, stock, ranch, processing and reports. Keeps selling offline.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1C1815",
+  "theme_color": "#7A2331",
+  "categories": ["business", "productivity", "shopping"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "POS", "short_name": "POS", "url": "/#pos", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Customer screen", "short_name": "Customer", "url": "/#customer-display", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

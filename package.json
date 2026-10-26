@@ -1,0 +1,41 @@
+{
+  "name": "bladeos",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "BladeOS — Blades & Butchers Digital Operations Platform",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "node --watch server/index.js",
+    "build": "vite build",
+    "start": "NODE_ENV=production node server/index.js",
+    "db:migrate": "node server/migrate.js",
+    "db:seed": "node server/seed.js",
+    "db:restore": "node server/restore.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.8.2",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.22.3",
+    "helmet": "^7.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "0.383.0",
+    "pg": "^8.23.1",
+    "qrcode": "^1.5.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "recharts": "2.12.7",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
+  }
+}

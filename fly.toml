@@ -1,0 +1,34 @@
+# Fly.io — see DEPLOY.md. Change `app` to your app name (fly launch suggests one).
+app = "bladeos"
+primary_region = "lhr"          # London: lowest latency to Nigeria among Fly regions; "jnb" (Johannesburg) also works
+
+[build]                         # builds the Dockerfile
+
+[env]
+  NODE_ENV = "production"
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # Always on, one machine: the till must never wait for a cold start, and the built-in schedule
+  # (backup reminders, birthday emails) runs inside the app. Don't scale above 1 machine.
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 200
+    hard_limit = 250
+
+  [[http_service.checks]]
+    grace_period = "60s"
+    interval = "30s"
+    method = "GET"
+    path = "/health"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

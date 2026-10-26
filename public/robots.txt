@@ -1,0 +1,3 @@
+# BladeOS is an internal operations platform — keep it out of search engines.
+User-agent: *
+Disallow: /

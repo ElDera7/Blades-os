@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { margin: 0; padding: 0; background: #F7F3EC; }
+#root { min-height: 100vh; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #DED4C2; border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.f-display { font-family: 'Fraunces', serif; }
+.f-body { font-family: 'Inter', sans-serif; }
+.f-mono { font-family: 'JetBrains Mono', monospace; }
+
+@keyframes toastIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Phones: tables become card lists (labels come from the column headings). */
+@media (max-width: 639px) {
+  .tbl-stack { min-width: 0 !important; }
+  .tbl-stack thead { display: none; }
+  .tbl-stack tbody tr { display: block; padding: 10px 16px; }
+  .tbl-stack tbody td { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding: 3px 0 !important; text-align: right; white-space: normal; }
+  .tbl-stack tbody td > * { min-width: 0; }
+  .tbl-stack tbody td::before { content: attr(data-label); flex-shrink: 0; text-align: left; padding-top: 2px;
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #6B6358; }
+  .tbl-stack tbody td[data-label=""] { justify-content: flex-end; }
+  .tbl-stack tbody td[data-label=""]::before { content: none; }
+  .tbl-stack tbody td:first-child { padding-top: 0 !important; }
+}

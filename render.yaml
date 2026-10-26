@@ -1,0 +1,30 @@
+# Render Blueprint: New → Blueprint → pick this repo. Creates the app and its PostgreSQL database.
+# Render asks for ADMIN_EMAIL, ADMIN_PASSWORD and BACKUP_PASSPHRASE. Moving from another host: replace the
+# generated JWT_SECRET with the old one before the first sign-in (see DEPLOY.md).
+services:
+  - type: web
+    runtime: docker
+    name: bladeos
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    numInstances: 1          # one copy only: the daily schedule runs inside the app
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bladeos-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_NAME
+        value: Jeffrey
+      - key: BACKUP_PASSPHRASE
+        sync: false
+
+databases:
+  - name: bladeos-db
+    databaseName: bladeos
+    user: bladeos

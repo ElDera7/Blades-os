@@ -1,0 +1,51 @@
+# On every push: build the Docker image exactly as the hosts do, start it against a fresh PostgreSQL,
+# and check it answers /health and signs in. A red ✗ on GitHub means: don't deploy that commit yet.
+name: Check build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-boot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      db:
+        image: postgres:16
+        env:
+          POSTGRES_USER: bladeos
+          POSTGRES_PASSWORD: bladeos
+          POSTGRES_DB: bladeos
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U bladeos" --health-interval 5s --health-timeout 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build the image
+        run: docker build -t bladeos .
+
+      - name: Start it on a fresh database
+        run: |
+          docker run -d --name app --network host \
+            -e PORT=8080 \
+            -e DATABASE_URL=postgres://bladeos:bladeos@localhost:5432/bladeos \
+            -e JWT_SECRET=ci-only-secret-0123456789abcdef0123456789abcdef \
+            -e ADMIN_EMAIL=ci@example.com -e ADMIN_PASSWORD=Ci-Temp-Pass-2026 \
+            bladeos
+          for i in $(seq 1 60); do curl -fs localhost:8080/health && exit 0; sleep 2; done
+          docker logs app; exit 1
+
+      - name: Check the app works
+        run: |
+          curl -fs localhost:8080/ | grep -q "<title>BladeOS"
+          curl -fs -X POST localhost:8080/api/auth/login -H 'content-type: application/json' \
+            -d '{"email":"ci@example.com","password":"Ci-Temp-Pass-2026"}' | grep -q '"email":"ci@example.com"'
+          curl -fs localhost:8080/downloads/BladeOS-Till-Setup.cmd | grep -q BLADEOS_BASE
+          docker logs app | grep -q "Migration applied: 011_customer_marketing.sql"
+
+      - name: Logs
+        if: always()
+        run: docker logs app || true
