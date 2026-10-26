@@ -1,30 +1,68 @@
-# Render Blueprint: New → Blueprint → pick this repo. Creates the app and its PostgreSQL database.
-# Render asks for ADMIN_EMAIL, ADMIN_PASSWORD and BACKUP_PASSPHRASE. Moving from another host: replace the
-# generated JWT_SECRET with the old one before the first sign-in (see DEPLOY.md).
+# ============================================================================
+#  BladeOS — Render Blueprint (one-click deploy)
+#  New → Blueprint → connect this repo → Render creates the app + PostgreSQL.
+#  Fill in ADMIN_EMAIL, ADMIN_PASSWORD, BACKUP_PASSPHRASE when prompted.
+# ============================================================================
 services:
   - type: web
     runtime: docker
     name: bladeos
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health
-    numInstances: 1          # one copy only: the daily schedule runs inside the app
+    numInstances: 1          # one copy only: scheduled backup & birthday emails run inside the app
+    plan: starter            # always-on (no sleep); upgrade to standard for more RAM
     envVars:
+      # ---- database (filled automatically by the database block below) ----
       - key: DATABASE_URL
         fromDatabase:
           name: bladeos-db
           property: connectionString
+
+      # ---- security (auto-generated) ----
       - key: JWT_SECRET
         generateValue: true
+
+      # ---- first account — Render asks for these at deploy time ----
       - key: ADMIN_EMAIL
         sync: false
       - key: ADMIN_PASSWORD
         sync: false
       - key: ADMIN_NAME
         value: Jeffrey
+
+      # ---- backups — set BACKUP_PASSPHRASE at deploy time; add S3 vars for nightly off-site copies ----
+      #  Without S3 vars: weekly encrypted download from Administration → Backups is the backup.
+      #  With S3 vars:    nightly encrypted copies are uploaded automatically (Cloudflare R2 is free).
       - key: BACKUP_PASSPHRASE
         sync: false
+      # Uncomment and fill in for nightly automatic off-site backups (Cloudflare R2 / Backblaze B2 / AWS S3):
+      # - key: BACKUP_S3_ENDPOINT
+      #   value: https://<account-id>.r2.cloudflarestorage.com
+      # - key: BACKUP_S3_BUCKET
+      #   value: bladeos-backups
+      # - key: BACKUP_S3_REGION
+      #   value: auto
+      # - key: BACKUP_S3_ACCESS_KEY
+      #   sync: false
+      # - key: BACKUP_S3_SECRET_KEY
+      #   sync: false
+      # - key: BACKUP_S3_PREFIX
+      #   value: bladeos/
+      # - key: BACKUP_RETENTION_DAYS
+      #   value: "35"
+
+      # ---- optional: custom domain, emails (Resend), two-step sign-in enforcement ----
+      # - key: PUBLIC_URL
+      #   value: https://pos.bladesbutchers.com
+      # - key: RESEND_API_KEY
+      #   sync: false
+      # - key: EMAIL_FROM
+      #   value: Blades & Butchers <hello@bladesbutchers.com>
+      # - key: REQUIRE_TWO_STEP
+      #   value: "true"
 
 databases:
   - name: bladeos-db
     databaseName: bladeos
     user: bladeos
+    plan: starter            # Render managed PostgreSQL with daily backups included
