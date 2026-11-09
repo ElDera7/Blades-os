@@ -3,7 +3,7 @@ setlocal
 rem ============================================================================
 rem  BladeOS POS launcher for Windows tills (Licon and other all-in-one terminals)
 rem
-rem  1. Change BLADEOS_URL below to your BladeOS address.
+rem  1. Change BLADEOS_URL below to your Render address (e.g. https://bladeos.onrender.com).
 rem  2. Change PRIMARY_WIDTH to the main screen's width in pixels
 rem     (Settings > Display > Display resolution, e.g. 1366 or 1920).
 rem  3. Double-click this file to test. To install it (Desktop icon, Start menu,
@@ -13,7 +13,7 @@ rem
 rem  It opens the till full screen with silent receipt printing (to the Windows
 rem  default printer) and the customer screen on the second monitor.
 rem ============================================================================
-set "BLADEOS_URL=https://blades-butchers-production.up.railway.app"
+set "BLADEOS_URL=https://bladeos.onrender.com"
 set "PRIMARY_WIDTH=1366"
 set "PROFILE=%LOCALAPPDATA%\BladeOS-POS"
 
