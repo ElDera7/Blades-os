@@ -19,7 +19,10 @@ VALUES (
 )
 ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
--- 2. Insert or Update all Official Blades & Butchers Products with PLUs and Pricing
+-- 2. Clear existing PLUs first to prevent unique constraint collisions (products_plu_uq)
+UPDATE products SET plu = NULL WHERE plu IS NOT NULL;
+
+-- 3. Insert or Update all Official Blades & Butchers Products with PLUs and Pricing
 INSERT INTO products (sku, name, category, unit, price, cost_price, min_stock, sort, plu, shelf_life_days, track_stock)
 VALUES
   -- Beef (Per KG)
