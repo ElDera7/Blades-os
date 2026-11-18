@@ -1,47 +1,58 @@
 LFCode,Code,Name,UnitPrice,Unit,BarcodeType,Department
-1,BEEF-STD,"Beef",7500,kg,2,1
-2,BEEF-PREM-STK,"Premium Steak cut",12000,kg,2,1
-3,BEEF-SOFT-BL,"Soft boneless meat",8500,kg,2,1
-4,BEEF-RIBEYE,"Rib eye steak",13500,kg,2,1
-5,BEEF-SIRLOIN,"Sirloin steak",12500,kg,2,1
-6,BEEF-TBONE,"Tbone steak",13500,kg,2,1
-7,BEEF-FILLET,"Fillet/Tender loin",14000,kg,2,1
-8,BEEF-SUYA,"Suya beef cut",10500,kg,2,1
-9,BEEF-MINCE,"Minced beef",8500,kg,2,1
-10,BEEF-MARINATED,"Marinated beef",11000,kg,2,1
-11,RAM-STD,"Ram meat",11500,kg,2,1
-12,RAM-PREM,"Premium ram cuts",13000,kg,2,1
-13,RAM-ASSTD,"Ram assorted",7000,kg,2,1
-14,RAM-PS-PACK,"Peppersoup ram pack",12000,pcs,2,1
-15,RAM-SMOKED,"Smoked ram",14000,kg,2,1
-16,GOAT-STD,"Goat meat",8500,kg,2,1
-17,GOAT-PREM,"Premium goat cut",10000,kg,2,1
-18,GOAT-ASSTD,"Goat assorted",6500,kg,2,1
-19,GOAT-MARINATED,"Marinated goat meat",11000,kg,2,1
-20,GOAT-PS-PACK,"Peppersoup goat pack",10500,pcs,2,1
-21,GOAT-SMOKED,"Smoked goat meat",11500,kg,2,1
-22,TURKEY-WINGS,"Turkey Wings",11500,kg,2,1
-23,TURKEY-GIZZARD,"Turkey Gizzards",10000,kg,2,1
-24,TURKEY-DRUM,"Turkey drumsticks",11500,kg,2,1
-25,TURKEY-FZ-WINGS,"Frozen Turkey wings",10500,kg,2,1
-26,TURKEY-FZ-GIZZARD,"Frozen Turkey Gizzard",9000,kg,2,1
-27,TURKEY-PS,"Peppersoup turkey",13500,kg,2,1
-28,TURKEY-SMOKED,"Smoked turkey",13500,kg,2,1
-29,CHICK-WINGS,"Chicken wings",7500,kg,2,1
-30,CHICK-BREAST,"Chicken breast",8500,kg,2,1
-31,CHICK-THIGHS,"Chicken thighs",7500,kg,2,1
-32,CHICK-GIZZARD,"Chicken gizzard",8000,kg,2,1
-33,CHICK-MARINATED,"Marinated chicken",11000,kg,2,1
-34,CHICK-SMOKED,"Smoked Chicken",12000,kg,2,1
-35,CHICK-PEPPERED,"Peppered chicken",9500,kg,2,1
-36,CHICK-FZ-WINGS,"Frozen Chicken wings",6500,kg,2,1
-37,CHICK-FZ-THIGHS,"Frozen Chicken thighs",6500,kg,2,1
-38,CHICK-FZ-GIZZARD,"Frozen chicken gizzards",7000,kg,2,1
-39,CHICK-FZ-BREAST,"Frozen Chicken breasts",7000,kg,2,1
-40,LIVE-BROILER,"Broilers (live)",10000,pcs,2,1
-41,LIVE-LOCAL,"Local chicken (live)",15000,pcs,2,1
-42,LIVE-NOILER,"Noilers (live)",12000,pcs,2,1
-43,PKG-BRONZE,"Bronze package",23500,pcs,2,1
-44,PKG-SILVER,"Silver package",36750,pcs,2,1
-45,PKG-GOLD,"Gold package",59750,pcs,2,1
-46,PKG-FAMILY,"Family package",87000,pcs,2,1
+1,BEEF-STD,"Beef",12500,kg,2,1
+2,BEEF-FILLET,"Beef Fillet",13500,kg,2,1
+3,BEEF-PREM-STK,"Premium Steak Cut",12000,kg,2,1
+4,BEEF-RIBEYE,"Rib Eye Steak",17500,kg,2,1
+5,BEEF-SIRLOIN,"Sirloin Steak",10900,kg,2,1
+6,BEEF-TBONE,"T-Bone Steak",17500,kg,2,1
+7,BEEF-TENDERLOIN,"Fillet/Tender Loin",10900,kg,2,1
+8,BEEF-SUYA,"Suya Beef Cut",10900,kg,2,1
+9,BEEF-MINCE,"Minced Beef",10870,kg,2,1
+10,BEEF-MARINATED,"Marinated Beef",11000,kg,2,1
+11,BEEF-BURGER,"Beef Burger",12000,kg,2,1
+12,BEEF-SHAWARMA,"Beef Shawarma",15000,kg,2,1
+13,BEEF-TOPSIDE,"Top Side",10870,kg,2,1
+14,BEEF-BACKSTEAK,"Back Steak",10900,kg,2,1
+15,BEEF-OXTAIL,"Oxtail",10300,kg,2,1
+16,BEEF-KIDNEY,"Ox Kidney",9250,kg,2,1
+17,BEEF-LIVER,"Liver",8650,kg,2,1
+18,BEEF-COWLEGS,"Cow Legs",8000,kg,2,1
+19,BEEF-COWTAIL,"Cow Tail",8300,kg,2,1
+20,BEEF-COWHEAD,"Cow Head",10000,pcs,2,1
+21,BEEF-SHINE,"Shine",8000,kg,2,1
+22,RAM-STD,"Ram",10870,kg,2,1
+23,RAM-PREM,"Premium Ram Cuts",12000,kg,2,1
+24,RAM-ASSTD,"Ram Assorted",6500,kg,2,1
+25,RAM-BURGER,"Ram Burger",10000,kg,2,1
+26,RAM-MINCE,"Ram Minced",12000,kg,2,1
+27,LAMB-CHOPS,"Lambchops",12000,kg,2,1
+28,LAMB-STD,"Lamb",10870,kg,2,1
+29,LAMB-ROASTED,"Roasted Lamb",10870,kg,2,1
+30,LAMB-BONE,"Lamb Meat with Bone",11500,kg,2,1
+31,LAMB-NOBONE,"Lamb without Bone",13000,kg,2,1
+32,GOAT-STD,"Goat Meat",16500,kg,2,1
+33,GOAT-PREM,"Premium Goat Cut",12000,kg,2,1
+34,GOAT-ASSTD,"Goat Assorted",6500,kg,2,1
+35,GOAT-BONE,"Goat Meat with Bone",15000,kg,2,1
+36,GOAT-NOBONE,"Goat Meat without Bone",15900,kg,2,1
+37,GOAT-SMOKED,"Smoked Goat",10870,kg,2,1
+38,CHICK-LAP,"Chicken Lap",7200,kg,2,1
+39,CHICK-WINGS,"Chicken Wings",9500,kg,2,1
+40,CHICK-BREAST,"Chicken Breast",9500,kg,2,1
+41,CHICK-THIGHS,"Chicken Thighs",12500,kg,2,1
+42,CHICK-GIZZARD,"Chicken Gizzard",8020,kg,2,1
+43,CHICK-DRUM,"Chicken Drumstick",9500,kg,2,1
+44,CHICK-BURGER,"Chicken Burger",9500,kg,2,1
+45,CHICK-MARINATED,"Marinated Chicken",13700,kg,2,1
+46,CHICK-WHOLE,"Whole Chicken",7000,kg,2,1
+47,CHICK-LOCAL,"Local Chicken",13860,kg,2,1
+48,TURKEY-WINGS,"Turkey Wings",13500,kg,2,1
+49,TURKEY-GIZZARD,"Turkey Gizzard",13700,kg,2,1
+50,TURKEY-DRUM,"Turkey Drumstick",15000,kg,2,1
+51,TURKEY-HAM,"Turkey Ham",32000,kg,2,1
+52,CHEESE-MOZZ,"Mozzarella Cheese",22000,kg,2,1
+53,CHEESE-PARM,"Parmesan Cheese",50000,kg,2,1
+54,CHEESE-REDCHD,"Red Cheddar Cheese",27000,kg,2,1
+55,CHEESE-WHTCHD,"White Cheddar Cheese",30500,kg,2,1
+56,CHEESE-CHD,"Cheddar Cheese",35000,kg,2,1
+57,CHEESE-KASH,"Kashkaval Cow",59000,kg,2,1
