@@ -9,20 +9,7 @@ import { hashPassword } from "./auth.js";
    ===================================================================== */
 export const LOCATIONS = ["Cold Room A", "Cold Room B", "Display Chiller", "Freezer 01", "Freezer 02", "Processing Area"];
 export const RANCHES = ["Ranch A — Kuje", "Ranch B — Gwagwalada"];
-export const PRODUCTS = [
-  // sku, name, category, unit, price, cost, min
-  ["PB-BEEF", "Premium Beef", "Beef", "KG", 8500, 5270, 40],
-  ["STEW-BEEF", "Stew Cuts", "Beef", "KG", 6800, 4216, 30],
-  ["BL-BEEF", "Boneless Beef", "Beef", "KG", 9200, 5704, 20],
-  ["MINCE-BEEF", "Minced Beef", "Beef", "KG", 7200, 4464, 20],
-  ["OTH-BEEF", "Other Beef Cuts", "Beef", "KG", 5600, 3472, 15],
-  ["GOAT-MEAT", "Goat Meat", "Goat", "KG", 7800, 4836, 25],
-  ["RAM-MEAT", "Ram Meat", "Sheep", "KG", 8200, 5084, 10],
-  ["CHICKEN", "Chicken", "Poultry", "Unit", 7200, 4464, 30],
-  ["TURKEY", "Turkey", "Poultry", "Unit", 15500, 9610, 15],
-  ["SAUSAGE", "Sausages", "Processed", "Pack", 3200, 1984, 20],
-  ["KPOMO", "Kpomo", "By-product", "KG", 2600, 1612, 10],
-];
+export const PRODUCTS = [];
 
 export async function seedReference() {
   await tx(async (db) => {
@@ -59,17 +46,7 @@ export const WEBSITE_PHOTOS = {
   "STEW-BEEF": "/products/stew-cuts.jpg", "GOAT-MEAT": "/products/goat-meat.png", "CHICKEN": "/products/chicken.png",
   "TURKEY": "/products/turkey.png", "SAUSAGE": "/products/sausages.jpg",
 };
-export const WEBSITE_PRODUCTS = [
-  // sku, name, category, unit, price, cost, min, vat %, photo, counted
-  ["WHOLE-BIRD", "Whole Bird", "Poultry", "Unit", 9500, 5890, 10, 0, "/products/whole-bird.jpg", true],
-  ["EGGS", "Eggs (crate)", "Poultry", "Pack", 5500, 3410, 10, 0, "/products/eggs.jpg", true],
-  ["MARINATED", "Marinated Meat", "Processed", "KG", 9800, 6076, 10, 0, "/products/marinated-meat.jpg", true],
-  ["FROZEN-PACK", "Frozen Meat Pack", "Processed", "Pack", 15000, 9300, 10, 0, "/products/frozen-meat-pack.jpg", true],
-  ["PKG-SEAL", "Basic Sealing", "Packaging", "Unit", 200, 60, 0, 7.5, "/products/basic-sealing.png", false],
-  ["PKG-KRAFT", "Kraft Box", "Packaging", "Unit", 1000, 450, 0, 7.5, "/products/kraft-box.png", false],
-  ["PKG-TAKEOUT", "Plastic Takeout Pack", "Packaging", "Unit", 300, 120, 0, 7.5, "/products/takeout-pack.png", false],
-  ["PKG-ZIPLOCK", "Branded Zip-Lock Bag", "Packaging", "Unit", 250, 100, 0, 7.5, "/products/zip-lock-bag.png", false],
-];
+export const WEBSITE_PRODUCTS = [];
 
 export async function seedWebsiteCatalogue() {
   await tx(async (db) => {
