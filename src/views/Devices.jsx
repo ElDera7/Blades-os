@@ -76,8 +76,13 @@ export function describeCode(code, inventory = [], profile = {}) {
     const d = c.split("").map(Number);
     const ok = (10 - (d.slice(0, 12).reduce((s, x, i) => s + x * (i % 2 ? 3 : 1), 0) % 10)) % 10 === d[12];
     if (!ok) return "Scale label with a bad check digit — reprint the label";
-    const plu = Number(c.slice(2, 7)), v = Number(c.slice(7, 12));
-    const q = inventory.find((x) => x.plu === plu);
+    let plu = Number(c.slice(2, 7)), v = Number(c.slice(7, 12));
+    let q = inventory.find((x) => x.plu === plu);
+    if (!q) {
+      const altPlu = Number(c.slice(7, 12)), altVal = Number(c.slice(2, 7));
+      const altQ = inventory.find((x) => x.plu === altPlu);
+      if (altQ) { q = altQ; plu = altPlu; v = altVal; }
+    }
     return q ? `Scale label → ${q.name}, ${profile.scaleLabel === "price" ? `₦${v.toLocaleString("en-NG")}` : `${(v / 1000).toFixed(3)} KG`}` : `Scale label for PLU ${plu} — no product has that PLU`;
   }
   if (/^\d{1,5}$/.test(c)) { const q = inventory.find((x) => x.plu === Number(c)); return q ? `PLU → ${q.name}` : `No product has PLU ${c}`; }

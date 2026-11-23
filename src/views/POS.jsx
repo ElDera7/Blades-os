@@ -143,8 +143,13 @@ export function POSView({ data, actions, permit }) {
     if (exact) { exact.unit === "KG" ? setPicking(exact) : addLine(exact, 1); setSearch(""); return; }
     if (/^2\d{12}$/.test(code)) {
       if (!eanOk(code)) { setScanMsg({ bad: true, text: "That label didn't scan cleanly — scan it again." }); setSearch(""); return; }
-      const plu = Number(code.slice(2, 7)), value = Number(code.slice(7, 12));
-      const p = inventory.find((x) => x.plu === plu);
+      let plu = Number(code.slice(2, 7)), value = Number(code.slice(7, 12));
+      let p = inventory.find((x) => x.plu === plu);
+      if (!p) {
+        const altPlu = Number(code.slice(7, 12)), altVal = Number(code.slice(2, 7));
+        const altP = inventory.find((x) => x.plu === altPlu);
+        if (altP) { p = altP; plu = altPlu; value = altVal; }
+      }
       if (!p) { setScanMsg({ bad: true, text: `No product has PLU ${plu}.` }); setSearch(""); return; }
       const qty = pos.profile.scaleLabel === "price" ? round3(value / p.price) : round3(value / 1000);
       if (!(qty > 0)) { setScanMsg({ bad: true, text: "That label has no weight." }); setSearch(""); return; }
